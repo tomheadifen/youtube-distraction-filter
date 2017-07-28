@@ -1,0 +1,12 @@
+{
+	"name": "youtube-distraction-filter",
+	"version": "0.0.1",
+	"description": "Remove distracting elements from youtube",
+	"author": "Tom <thomas@headifen.com>",
+	"scripts": {
+		"start": "webpack-dev-server --inline"
+	},
+	"dependencies": {
+		"webpack": "^3.1.0"
+	}
+}
