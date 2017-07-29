@@ -1,20 +1,26 @@
 {
-  "manifest_version": 2,
+	"manifest_version": 2,
 
-  "name": "Youtube-distraction-filter",
-  "description": "Remove distracting elements from youtube",
-  "version": "1.0",
-
-  "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
-  },
-  "content_scripts": [
-    {
-      "matches": ["https://www.youtube.com/watch?v=*", "https://www.tomheadifen.com/*"],
-      "js": ["content.js"],
-      "run_at": "document_end"
-    }
-  ]
+	"name": "Youtube-distraction-filter",
+	"description": "Remove distracting elements from youtube",
+	"version": "1.0",
+	"background": {
+	  "scripts": ["background.js"],
+	  "persistent": false
+	},
+	"page_action": {
+		"default_icon": "eye-icon.png",
+		"default_title": "Youtube Distraction Filter",
+		"default_popup": "popup.html"
+	},
+	"content_scripts": [
+		{
+			"matches": ["https://www.youtube.com/watch?v=*"],
+			"js": ["youtube-distraction-filter.js"],
+			"run_at": "document_end"
+		}
+	],
+	"permissions": [
+		"declarativeContent"
+	]
 }
-      // "matches": ["*://*.youtube.com/watch?v=*"],
