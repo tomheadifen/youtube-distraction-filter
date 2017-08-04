@@ -30,8 +30,8 @@ class FieldManager {
 		const self = this;
 		let existCondition,
 		timer = 0,
-		allRemoved;
-		timerLimit = 100, // Stop searching for Ids after 10 sec
+		allRemoved,
+		timerLimit = 100; // Stop searching for Ids after 10 sec
 
 		existCondition = setInterval(function() {
 			allRemoved = self.allFields.every(element => element.remove === false);
