@@ -15,8 +15,8 @@ class FieldManager {
 			for (let key in fields) {
 				if(!fields.hasOwnProperty(key)) continue;
 				self.allFields.push(new Field({
-					'name': key,
-					'remove': fields[key]
+					'name': fields[key].youtubeId,
+					'remove': fields[key].remove
 				}));
 			}
 			self.removeElements();

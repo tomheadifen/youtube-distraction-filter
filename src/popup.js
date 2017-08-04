@@ -1,4 +1,11 @@
 class Popup {
+	setCheckboxStates() {
+		chrome.storage.sync.get(null, function(storage) {
+			document.getElementById('comments').checked = storage.comments.remove;
+			document.getElementById('related').checked = storage.related.remove;
+		});
+	}
+
 	startListeners() {
 		const self = this;
 		// Checkboxes in popup. Chrome will not allow onClick() in DOM.
@@ -12,6 +19,11 @@ class Popup {
 			});
 			document.getElementById('deleteAll').addEventListener('click', function() {
 				chrome.storage.sync.clear();
+			});
+			document.getElementById('getStored').addEventListener('click', function() {
+				chrome.storage.sync.get(null, function(storage) {
+					console.log(storage);
+				});
 			});
 		});
 	}
@@ -27,9 +39,14 @@ class Popup {
 		let isChecked = document.getElementById(filterId).checked;
 
 		chrome.storage.sync.set({
-			[youtubeElementId]: isChecked
+			[filterId]: {
+				'remove': isChecked,
+				'youtubeId': youtubeElementId
+			}
 		});
 	}
 }
 
-new Popup().startListeners();
+const popup = new Popup();
+popup.setCheckboxStates();
+popup.startListeners();
