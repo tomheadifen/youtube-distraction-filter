@@ -5,7 +5,7 @@
 	"description": "Remove distracting elements from youtube",
 	"version": "1.0",
 	"background": {
-	  "scripts": ["background.js", "eventPage.js"],
+	  "scripts": ["background.js"],
 	  "persistent": false
 	},
 	"page_action": {
@@ -21,6 +21,7 @@
 		}
 	],
 	"permissions": [
-		"declarativeContent"
+		"declarativeContent",
+		"storage"
 	]
 }
