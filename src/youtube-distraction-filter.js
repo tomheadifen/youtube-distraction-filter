@@ -63,10 +63,45 @@ class Field {
 	removeElement() {
 		// remove the elemeent is it exists
 		if (document.getElementById(this.name)) {
-		 	document.getElementById(this.name).style.display = 'none';
-		 	this.remove = false;
+			document.getElementById(this.name).style.display = 'none';
+			this.remove = false;
 		}
 	}
 }
 
-new FieldManager().init();
+
+class Loader {
+	init() {
+		this.fieldManager = new FieldManager;
+		
+		// This will run on page load / first navigation
+		this.afterNavigate();
+
+		this.startListeners();
+	}
+
+
+	// Check that we are on a page with a video
+	afterNavigate() {
+		if (window.location.pathname === '/watch') {
+			this.fieldManager.init();
+		}
+	}
+
+	/**
+	 * The listeners for the youtube dom
+	 * @return {[void]}
+	 */
+	startListeners() {
+		var self = this;
+		(document.body || document.documentElement).addEventListener('transitionend',
+		  function(event) {
+			// check the loading bar youtube uses when changing page
+			if (event.propertyName === 'width' && event.target.id === 'progress') {
+				self.afterNavigate();
+			}
+		}, true);
+	}
+}
+
+new Loader().init();

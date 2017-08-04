@@ -15,7 +15,7 @@
 	},
 	"content_scripts": [
 		{
-			"matches": ["https://www.youtube.com/watch?v=*"],
+			"matches": ["https://www.youtube.com/*"],
 			"js": ["youtube-distraction-filter.js"],
 			"run_at": "document_end"
 		}

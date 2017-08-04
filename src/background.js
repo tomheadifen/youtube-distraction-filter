@@ -12,7 +12,7 @@ chrome.runtime.onInstalled.addListener(function() {
         // That fires when a page's URL contains a 'yotube' ...
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'https://www.youtube.com/watch?v=' },
+            pageUrl: { urlContains: 'https://www.youtube.com/' },
           })
         ],
         // And shows the extension's page action.
