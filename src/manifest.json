@@ -1,7 +1,7 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 
-	"name": "Youtube-distraction-filter",
+	"name": "Youtube Distraction Filter",
 	"description": "Remove distracting elements from youtube",
 	"version": "1.0",
 	"background": {
