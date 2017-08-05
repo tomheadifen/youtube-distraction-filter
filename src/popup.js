@@ -17,14 +17,6 @@ class Popup {
 			document.getElementById('related').addEventListener('click', function() {
 				self.storeElement('related', 'watch7-sidebar-contents');
 			});
-			document.getElementById('deleteAll').addEventListener('click', function() {
-				chrome.storage.sync.clear();
-			});
-			document.getElementById('getStored').addEventListener('click', function() {
-				chrome.storage.sync.get(null, function(storage) {
-					console.log(storage);
-				});
-			});
 		});
 	}
 
