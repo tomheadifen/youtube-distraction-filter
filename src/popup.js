@@ -12,10 +12,10 @@ class Popup {
 		document.addEventListener('DOMContentLoaded', function() {
 			document.getElementById('comments').addEventListener('click', function() {
 				// The element in the youtube dom
-				self.storeElement('comments', 'watch-discussion');
+				self.storeElement('comments', 'comments');
 			});
 			document.getElementById('related').addEventListener('click', function() {
-				self.storeElement('related', 'watch7-sidebar-contents');
+				self.storeElement('related', 'items');
 			});
 		});
 	}

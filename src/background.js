@@ -20,18 +20,21 @@ chrome.runtime.onInstalled.addListener(function() {
 			}
 		]);
 	});
+
 	// Store default objects
+	// Comments
 	chrome.storage.sync.set({
 		'comments': {
 			'remove': true,
-			'youtubeId': 'watch-discussion'
+			'youtubeId': 'comments'
 		}
 	});
 
+	// Related Videos
 	chrome.storage.sync.set({
 		'related': {
 			'remove': true,
-			'youtubeId': 'watch7-sidebar-contents'
+			'youtubeId': 'items'
 		}
 	});
 });
