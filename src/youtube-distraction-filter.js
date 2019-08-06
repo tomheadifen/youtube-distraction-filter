@@ -66,7 +66,6 @@ class Field {
 	removeElement() {
 		// remove the element if it exists
 		if (document.getElementById(this.name)) {
-			console.log(document.getElementById(this.name));
 			document.getElementById(this.name).style.display = 'none';
 			this.remove = false;
 		}
