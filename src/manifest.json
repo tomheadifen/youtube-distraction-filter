@@ -1,5 +1,5 @@
 {
-	"manifest_version": 3,
+	"manifest_version": 2,
 
 	"name": "Youtube Distraction Filter",
 	"description": "Remove distracting elements from youtube",

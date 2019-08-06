@@ -1,4 +1,6 @@
+
 /**
+ * File is required by the chrome extension framework
  * Change the rules when the program is first installed to only run when watching on youtube and to create the objects to filter
 **/
 
@@ -34,7 +36,7 @@ chrome.runtime.onInstalled.addListener(function() {
 	chrome.storage.sync.set({
 		'related': {
 			'remove': true,
-			'youtubeId': 'items'
+			'youtubeId': 'related'
 		}
 	});
 });

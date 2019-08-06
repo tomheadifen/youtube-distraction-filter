@@ -2,9 +2,6 @@
 class FieldManager {
 	constructor() {
 		this.allFields = [];
-	}
-
-	init() {
 		this.setFields();
 	}
 
@@ -31,12 +28,15 @@ class FieldManager {
 		let existCondition,
 		timer = 0,
 		allRemoved,
-		timerLimit = 100; // Stop searching for Ids after 10 sec
+		timerLimit = 100; // Stop searching for Ids after 10/100 attempts sec
 
 		existCondition = setInterval(function() {
+			// Did we remove the elements
 			allRemoved = self.allFields.every(element => element.remove === false);
+
 			// If we don't need to remove value
 			if (allRemoved || timer == timerLimit) {
+				// Bail out of interval
 				clearInterval(existCondition);
 			}
 
@@ -45,6 +45,8 @@ class FieldManager {
 					field.removeElement();
 				}
 			});
+
+		// Interval every 100ms
 		}, 100);
 	}
 }
@@ -53,6 +55,7 @@ class FieldManager {
 /*
  * Remove a list of fields from webpage
  * @param Array The array of fields you want to remove
+ * @return Void
  */
 class Field {
 	constructor({name, remove}) {
@@ -61,19 +64,20 @@ class Field {
 	}
 
 	removeElement() {
-		// remove the elemeent is it exists
+		// remove the element if it exists
 		if (document.getElementById(this.name)) {
+			console.log(document.getElementById(this.name));
 			document.getElementById(this.name).style.display = 'none';
 			this.remove = false;
 		}
 	}
 }
 
-
+/*
+ * Manages when we should remove fields
+ */
 class Loader {
-	init() {
-		this.fieldManager = new FieldManager;
-		
+	constructor() {
 		// This will run on page load / first navigation
 		this.afterNavigate();
 
@@ -84,7 +88,7 @@ class Loader {
 	// Check that we are on a page with a video
 	afterNavigate() {
 		if (window.location.pathname === '/watch') {
-			this.fieldManager.init();
+			this.fieldManager = new FieldManager();
 		}
 	}
 
@@ -104,4 +108,5 @@ class Loader {
 	}
 }
 
-new Loader().init();
+// AWAY WE GO
+new Loader();

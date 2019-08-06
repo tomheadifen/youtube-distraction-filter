@@ -1,4 +1,16 @@
+/**
+ * File is required by the chrome extension framework
+**/
 class Popup {
+	constructor() {
+		this.setCheckboxStates();
+		this.startListeners();
+	}
+
+	/**
+	 * Check chrome storage to set the check boxes states
+	 * @return {[void]}
+	 */
 	setCheckboxStates() {
 		chrome.storage.sync.get(null, function(storage) {
 			document.getElementById('comments').checked = storage.comments.remove;
@@ -6,14 +18,20 @@ class Popup {
 		});
 	}
 
+	/**
+	* Check the checkboxes that the users have selected.
+	* Store them in the chrome storage
+	* @return {[void]}
+	**/
 	startListeners() {
 		const self = this;
 		// Checkboxes in popup. Chrome will not allow onClick() in DOM.
 		document.addEventListener('DOMContentLoaded', function() {
 			document.getElementById('comments').addEventListener('click', function() {
-				// The element in the youtube dom
+				// The element in the extension
 				self.storeElement('comments', 'comments');
 			});
+
 			document.getElementById('related').addEventListener('click', function() {
 				self.storeElement('related', 'items');
 			});
@@ -40,5 +58,3 @@ class Popup {
 }
 
 const popup = new Popup();
-popup.setCheckboxStates();
-popup.startListeners();
